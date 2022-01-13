@@ -9,7 +9,7 @@
     - [x] O projeto deve ser todo escrito em inglês.
     - [x] Enviar o projeto e o script do banco de dados populado anexos por e-mail.
 
-<a href="https://github.com/j-rdel/TARSTestJardel-mobile.git">Link to front-end repository</a>
+<a href="https://github.com/j-rdel/TARSTestJardel-mobile">Link to Flutter repository</a>
 
 ------
 
