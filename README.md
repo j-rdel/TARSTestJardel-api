@@ -41,4 +41,12 @@ $ dotnet run --urls "http://localhost:5001"
 POST/GET = http://localhost:5001/peoples
 PATCH/DELETE = http://localhost:5001/peoples/id
 
+# JSON example to POST/PATCH
+{
+	"name":"Jardel Urban",
+	"age":"20",
+	"career":"Front end developer",
+	"photourl":"https://avatars.githubusercontent.com/u/57304363?v=4"
+}
+
 ```
