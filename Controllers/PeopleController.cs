@@ -5,11 +5,13 @@ using TARSTestJardel.Data;
 
 namespace TARSTestJardel.Controllers
 {
+    
     [ApiController]
     [Route("peoples")]
 
     public class PeopleController : ControllerBase
     {
+       
         [HttpGet]
         [Route("")]
 
@@ -47,7 +49,7 @@ namespace TARSTestJardel.Controllers
 
             context.Peoples.Remove(people);
             await context.SaveChangesAsync();
-            return NoContent();    
+            return Content("Person successfully deleted!");    
         }
 
 
