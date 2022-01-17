@@ -12,6 +12,6 @@ namespace TARSTestJardel.Data
             : base(options)
         {
         }
-        public DbSet<People> Peoples {get; set;}
+        public DbSet<Person> Persons {get; set;}
     }
 }

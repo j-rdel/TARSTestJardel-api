@@ -7,27 +7,27 @@ namespace TARSTestJardel.Controllers
 {
     
     [ApiController]
-    [Route("peoples")]
+    [Route("person")]
 
-    public class PeopleController : ControllerBase
+    public class PersonController : ControllerBase
     {
        
         [HttpGet]
         [Route("")]
 
-        public async Task<ActionResult<List<People>>> List([FromServices] DataContext context)
+        public async Task<ActionResult<List<Person>>> GetList([FromServices] DataContext context)
         {
-            var peoples = await context.Peoples.ToListAsync();
-            return peoples;
+            var listPerson = await context.Persons.ToListAsync();
+            return listPerson;
         }
 
         [HttpPost]
         [Route("")]
 
-        public async Task<ActionResult<People>> Create([FromServices] DataContext context, [FromBody]People model)
+        public async Task<ActionResult<Person>> Create([FromServices] DataContext context, [FromBody]Person model)
         {
             if (ModelState.IsValid){
-                context.Peoples.Add(model);
+                context.Persons.Add(model);
                 await context.SaveChangesAsync();
                 return model;
             }
@@ -39,26 +39,39 @@ namespace TARSTestJardel.Controllers
 
         [HttpDelete]
         [Route("{id}")]
-        public async Task<ActionResult<People>> Remove([FromServices] DataContext context, [FromBody]People model, int id)
+        public async Task<ActionResult<Person>> Remove([FromServices] DataContext context, [FromBody]Person model, int id)
         {
-            var people = await context.Peoples.FindAsync(id);
+            var person = await context.Persons.FindAsync(id);
 
-            if (people == null){
+            if (person == null){
                return NotFound();
             }
 
-            context.Peoples.Remove(people);
+            context.Persons.Remove(person);
             await context.SaveChangesAsync();
             return Content("Person successfully deleted!");    
+        }
+
+        [HttpGet]
+        [Route("{id}")]
+        public async Task<ActionResult<Person>> GetPerson([FromServices] DataContext context, int id)
+        {
+            var person = await context.Persons.FindAsync(id);
+
+            if (person == null){
+               return NotFound();
+            }
+
+            return person;    
         }
 
 
         [HttpPatch]
         [Route("{id}")]
 
-        public async Task<ActionResult<People>> Update([FromServices] DataContext context, [FromBody]People model, int id)
+        public async Task<ActionResult<Person>> Update([FromServices] DataContext context, [FromBody]Person model, int id)
         { 
-            var entity = await context.Peoples.FirstOrDefaultAsync(x => x.Id == id);
+            var entity = await context.Persons.FirstOrDefaultAsync(x => x.Id == id);
 
             if (entity != null) {
                 if(ModelState.IsValid){
@@ -77,17 +90,6 @@ namespace TARSTestJardel.Controllers
             else {
                 return NotFound();
             }
-            // await context.SaveChangesAsync();
-            // return model;
-            // if (ModelState.IsValid){
-            //     people = model;
-            //     await context.SaveChangesAsync();
-            //     return people;
-            // }
-            // else
-            // {
-            //     return BadRequest(ModelState);
-            // }
         }
 
     }

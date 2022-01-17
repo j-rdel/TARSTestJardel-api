@@ -31,6 +31,18 @@ $ cd TARSTestJardel-api
 # Install the EntityFrameworkCore dependencie
 $ dotnet add package Pomelo.EntityFrameworkCore.MySql --version 6.0.0
 
+# Open your MySQL and run these commands to create database and table
+> CREATE DATABASE TARS;
+> USE TARS;
+> CREATE TABLE persons (
+	id Integer auto_increment,
+	name varchar(64) not null,
+	age Integer not null,
+	career varchar(32) not null,
+	photoURL varchar(2024) not null,
+	primary key (id)
+);
+
 # Open Program.cs and configure var ConnectionString with your database configurations
 $ vi Program.cs
 
@@ -38,8 +50,11 @@ $ vi Program.cs
 $ dotnet run --urls "http://localhost:5001"
 
 # Open Insomnia or some similiar app and test the routes
-POST/GET = http://localhost:5001/peoples
-PATCH/DELETE = http://localhost:5001/peoples/id
+# List of persons GET to /person
+# Individual person GET to /person/id
+# Remove an person DELETE to /person/id
+# Create person POST to /person
+# Update person PATCH to /person/id
 
 # JSON example to POST/PATCH
 {

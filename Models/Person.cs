@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace TARSTestJardel.Models 
 {
-    public class People 
+    public class Person 
     {
         [Key]
         public int Id {get; set;}
